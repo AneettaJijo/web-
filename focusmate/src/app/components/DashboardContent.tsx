@@ -1,16 +1,22 @@
 'use client';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { CheckSquare, Clock, Heart } from 'lucide-react';
 
-export default function DashboardContent() {
+interface DashboardContentProps {
+  username: string;
+}
+
+export default function DashboardContent({ username }: DashboardContentProps) {
   const tasks = [
     { id: 1, title: 'Complete project documentation', completed: false },
     { id: 2, title: 'Review team progress', completed: true },
     { id: 3, title: 'Prepare presentation slides', completed: false }
   ];
+ 
 
   return (
     <div className="space-y-6">
+            <h2 className="text-xl font-semibold text-gray-800 dark:text-white">Welcome, {username}!</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
           <div className="flex items-center justify-between">

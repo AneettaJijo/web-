@@ -7,13 +7,15 @@ interface HeaderProps {
   setSidebarOpen: (open: boolean) => void;
   darkMode: boolean;
   setDarkMode: (darkMode: boolean) => void;
+  onLogout: () => void; // new logout callback prop
 }
 
 export default function Header({
   sidebarOpen,
   setSidebarOpen,
   darkMode,
-  setDarkMode
+  setDarkMode,
+  onLogout,
 }: HeaderProps) {
   return (
     <header className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 px-4 py-3">
@@ -39,7 +41,11 @@ export default function Header({
           <button className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
             <Bell size={18} className="text-gray-600 dark:text-gray-400" />
           </button>
-          <button className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+          <button 
+            onClick={onLogout} // <-- attach logout handler here
+            className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            title="Logout"
+          >
             <User size={18} className="text-gray-600 dark:text-gray-400" />
           </button>
         </div>
